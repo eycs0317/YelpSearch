@@ -1,0 +1,32 @@
+.search-bar {
+  text-align: center;
+  /* margin-top: 10px; */
+  display: flex;
+  justify-content: center;
+
+}
+.search-input {
+  width: 40%;
+  height: 40px;
+  border-style: none;
+  padding-left: 10px;
+}
+.search-input1 {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.search-input2 {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  /* border-left: 3px solid black; */
+
+}
+.search-button {
+  margin-left: 10px;
+}
+span {
+border-left: 2px solid rgb(245, 241, 241);
+}
+.search-form {
+  width: 100%;
+}

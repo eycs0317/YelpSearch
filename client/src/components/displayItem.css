@@ -1,0 +1,24 @@
+.displayItem {
+
+}
+.displayItem-content {
+  width: 200px;
+  height: 180px;
+  background-color: rgb(243, 239, 243);
+  margin: 5px;
+}
+.displayItem-review-rating-content {
+  display: flex;
+  justify-content: center;
+
+}
+.displayItem-name {
+  font-weight: bold;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.displayItem-review{
+  margin-left: 5px;
+}
