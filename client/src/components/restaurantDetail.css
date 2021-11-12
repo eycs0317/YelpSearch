@@ -1,0 +1,19 @@
+.restaurantDetail-image {
+  width:35%;
+  height: auto;
+  margin-left: 30px;
+}
+.restaurantDetail-name {
+  font-size: 200%;
+  margin-left: 30px;
+}
+.restuarantDetail-title {
+  font-size: 20px;
+}
+.restuarantDetail-content {
+  display:flex;
+  flex-wrap: wrap;
+}
+.restuarantDetail-info {
+  padding: 10px;
+}

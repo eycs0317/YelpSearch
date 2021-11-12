@@ -4,14 +4,11 @@ import StarRating from './StarRating'
 import RestaurantDetail from './RestaurantDetail';
 
 function DisplayItem(props) {
-  const [restClick, setRestClick] = useState(false)
-  const handleOnClick = () => {
-    setRestClick(!restClick)
-  }
+
   return (
 
     <div className='displayItem' onClick={() => {
-      handleOnClick()
+      props.handleDetailClick(props.data)
     }}>
       <div className='displayItem-content'>
         <img className='displayItem-image' src={props.data.image_url} alt="store_image" />

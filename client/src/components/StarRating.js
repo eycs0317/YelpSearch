@@ -19,12 +19,12 @@ function StarRating(props) {
   return (
     <div className="star-rating">
 
-    {[...Array(stars)].map((star) => {
+    {[...Array(stars)].map((star, index) => {
       return (
-        <i class="fas fa-star"></i>
+        <i className="fas fa-star" key={index}></i>
       );
     })}
-    { decimal ? <i class="fas fa-star-half"></i> : null}
+    { decimal ? <i className="fas fa-star-half"></i> : null}
 
   </div>
   )

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './searchBar.css'
 import {apiSearch} from'../utils/API.js'
 import Display from './Display';
-// import RestaurantDetail from './components/RestaurantDetail'
+import RestaurantDetail from './RestaurantDetail'
+import DisplayItem from './DisplayItem'
 // import { Routes, Route, Link } from "react-router-dom";
 // console.log('apisearch', apiSearch())
 // console.log('key',process.env.REACT_APP_AUTHORIZATION_KEY)
@@ -10,6 +11,8 @@ function SearchBar() {
   const [searchItem, setSearchItem] = useState('')
   const [searchLocation, setSearchLocation] = useState('')
   const [yelpData, setYelpData] = useState('')
+  const [itemClick, setItemClick] = useState(false)
+  const [singleYelpData, setSingleYelpData] = useState()
 
   const handleChange = (event) => {
     console.log('eve', event.target.name)
@@ -33,6 +36,11 @@ function SearchBar() {
     catch (err){
       console.error(err)
     }
+  }
+  const handleDetailClick = (itemDetail) => {
+    console.log('handle detail got click', itemDetail)
+    setItemClick(true)
+    setSingleYelpData(itemDetail)
   }
   // useEffect(() => {
   //   handleLocation()
@@ -77,7 +85,17 @@ function SearchBar() {
         Search</button>
       </form>
     </div>
-    <Display yelpData={yelpData}/>
+    {itemClick ? <RestaurantDetail singleYelpData={singleYelpData} /> :
+      <div className='display'>
+        <div className='display-content'>
+          {yelpData ? yelpData.map(item => {
+            return <DisplayItem data={item} key={item.id} handleDetailClick={handleDetailClick}/>
+          }): null
+    }
+        </div>
+      </div>
+    }
+    {/* <Display yelpData={yelpData} handleDetailClick={handleDetailClick}/> */}
     {/* <Routes>
         <Route path="/display" element={<Display yelpData={yelpData}/>} />
         <Route path="/RestaurantDetail" element={<RestaurantDetail />} />
