@@ -4,6 +4,8 @@ import {apiSearch} from'../utils/API.js'
 import Display from './Display';
 import RestaurantDetail from './RestaurantDetail'
 import DisplayItem from './DisplayItem'
+import SearchIcon from '@mui/icons-material/Search';
+// import Checkbox from '@mui/material/Checkbox'
 // import { Routes, Route, Link } from "react-router-dom";
 // console.log('apisearch', apiSearch())
 // console.log('key',process.env.REACT_APP_AUTHORIZATION_KEY)
@@ -15,7 +17,7 @@ function SearchBar() {
   const [singleYelpData, setSingleYelpData] = useState()
 
   const handleChange = (event) => {
-    console.log('eve', event.target.name)
+
     if(event.target.name === 'searchItem') {
       setSearchItem(event.target.value)
     } else {
@@ -23,19 +25,27 @@ function SearchBar() {
     }
 
   }
-  const handleClick = async (event) => {
+  const handleClick = (event) => {
     console.log('clicked')
     event.preventDefault();
-    try {
-      const response = await apiSearch(searchItem, searchLocation)
-      // console.log(response)
-      const data = await response.json()
-      console.log('data', data)
+
+    fetch(`http://localhost:8000/search/${searchItem}/${searchLocation}`)
+    .then(res => {
+      console.log('front-res', res)
+      return res.json()
+    }).then(data => {
+      console.log('front-data', data)
       setYelpData(data.businesses)
-    }
-    catch (err){
-      console.error(err)
-    }
+    })
+      // const response = await apiSearch(searchItem, searchLocation)
+
+      // const data = await response.json()
+      // console.log('data', data)
+      // setYelpData(data.businesses)
+
+    // catch (err){
+    //   console.error(err)
+    // }
   }
   const handleDetailClick = (itemDetail) => {
     console.log('handle detail got click', itemDetail)
@@ -77,13 +87,17 @@ function SearchBar() {
         onChange={handleChange}
         value={searchLocation}
       />
-      <button
+      {/* <SearchIcon
         className='search-button'
+        sx={{ fontSize: 27 }}
         type='submit'
         onClick={handleClick}
         >
-        Search</button>
+        Search</SearchIcon> */}
       </form>
+      <div className="sort_by">
+      {/* <Checkbox defaultChecked /> */}
+      </div>
     </div>
     {itemClick ? <RestaurantDetail singleYelpData={singleYelpData} /> :
       <div className='display'>
@@ -95,11 +109,7 @@ function SearchBar() {
         </div>
       </div>
     }
-    {/* <Display yelpData={yelpData} handleDetailClick={handleDetailClick}/> */}
-    {/* <Routes>
-        <Route path="/display" element={<Display yelpData={yelpData}/>} />
-        <Route path="/RestaurantDetail" element={<RestaurantDetail />} />
-    </Routes> */}
+
     </>
 
   )

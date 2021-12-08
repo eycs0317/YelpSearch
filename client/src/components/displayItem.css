@@ -6,6 +6,7 @@
   height: 180px;
   background-color: rgb(243, 239, 243);
   margin: 5px;
+  padding-top:20px;
 }
 .displayItem-review-rating-content {
   display: flex;

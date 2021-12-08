@@ -4,9 +4,10 @@
   display: flex;
   justify-content: center;
 
+
 }
 .search-input {
-  width: 40%;
+  width: 37%;
   height: 40px;
   border-style: none;
   padding-left: 10px;
@@ -21,12 +22,15 @@
   /* border-left: 3px solid black; */
 
 }
-.search-button {
-  margin-left: 10px;
+.search-button:hover {
+  color: red;
 }
 span {
 border-left: 2px solid rgb(245, 241, 241);
 }
 .search-form {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
